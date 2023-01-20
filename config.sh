@@ -6,6 +6,10 @@ CONFIG_BUILD_OPENPMIX=false
 CONFIG_BUILD_PRRTE=false
 CONFIG_BUILD_OMP=false
 
+#CONFIG_OPENPMIX_CONFIGURE=--disable-werror
+#CONFIG_PRRTE_CONFIGURE=--disable-werror
+#CONFIG_OMP_CONFIGURE=--disable-werror
+
 PP=( "$@" )
 
 if [[ "${#PP[@]}" == 0 ]]; then
@@ -16,7 +20,7 @@ if [[ "${#PP[@]}" == 0 ]]; then
 	echo ""
 	echo "	'openpmix':	build with openpmix"
 	echo "	'prrte':	build with prrte"
-	echo "	'openmpi':	build with Open-MPI"
+	echo "	'omp':	build with Open-MPI"
 	echo ""
 	exit 1
 fi
@@ -24,7 +28,7 @@ fi
 if [[ " ${PP[*]} " =~ " all " ]]; then
 	CONFIG_BUILD_OPENPMIX=true
 	CONFIG_BUILD_PRRTE=true
-	CONFIG_BUILD_OPENMPI=true
+	CONFIG_BUILD_OMP=true
 fi
 
 if [[ " ${PP[*]} " =~ " openpmix " ]]; then
@@ -35,6 +39,6 @@ if [[ " ${PP[*]} " =~ " prrte " ]]; then
 	CONFIG_BUILD_PRRTE=true
 fi
 
-if [[ " ${PP[*]} " =~ " openmpi " ]]; then
-	CONFIG_BUILD_OPENMPI=true
+if [[ " ${PP[*]} " =~ " omp " ]]; then
+	CONFIG_BUILD_OMP=true
 fi

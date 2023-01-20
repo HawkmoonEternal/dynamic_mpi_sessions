@@ -62,7 +62,7 @@ if $CONFIG_BUILD_OPENPMIX; then
 	EXEC ./autogen.pl > $DYNMPI_BASE/output_openpmix_autogen.txt
 
 	echo " + Running configure ..."
-	EXEC ./configure --prefix=$PMIX_ROOT $CONFIGURE_PARAMETERS  > $DYNMPI_BASE/output_openpmix_configure.txt || ERROR_MSG
+	EXEC ./configure --prefix=$PMIX_ROOT $CONFIGURE_PARAMETERS $CONFIG_OPENPMIX_CONFIGURE > $DYNMPI_BASE/output_openpmix_configure.txt || ERROR_MSG
 
 	echo " + Running make ..."
 	EXEC make -j > $DYNMPI_BASE/output_openpmix_make.txt || ERROR_MSG
@@ -100,7 +100,7 @@ if $CONFIG_BUILD_PRRTE; then
 
 	echo " + Running configure ..."
 	echo ./configure --prefix=$PRRTE_ROOT $CONFIGURE_PARAMETERS -with-pmix=$PMIX_ROOT
-	EXEC ./configure --prefix=$PRRTE_ROOT $CONFIGURE_PARAMETERS -with-pmix=$PMIX_ROOT > $DYNMPI_BASE/output_prrte_configure.txt || ERROR_MSG
+	EXEC ./configure --prefix=$PRRTE_ROOT $CONFIGURE_PARAMETERS -with-pmix=$PMIX_ROOT $CONFIG_PRRTE_CONFIGURE > $DYNMPI_BASE/output_prrte_configure.txt || ERROR_MSG
 
 	echo " + Running make ..."
 	EXEC make -j > $DYNMPI_BASE/output_prrte_make.txt || ERROR_MSG
@@ -110,7 +110,7 @@ if $CONFIG_BUILD_PRRTE; then
 	echo "Installation of PRRTE successful"
 fi
 
-if $CONFIG_BUILD_OPENMPI; then
+if $CONFIG_BUILD_OMP; then
 
 	echo
 	echo "***********************************************"
@@ -130,16 +130,16 @@ if $CONFIG_BUILD_OPENMPI; then
 	EXEC cd $DYNMPI_BASE/build/ompi
 
 	echo " + Running autogen.pl ..."
-	EXEC ./autogen.pl > $DYNMPI_BASE/output_openmpi_autogen.txt || ERROR_MSG
+	EXEC ./autogen.pl > $DYNMPI_BASE/output_ompi_autogen.txt || ERROR_MSG
 
 	echo " + Running configure ..."
-	EXEC ./configure --prefix=$OMPI_ROOT $CONFIGURE_PARAMETERS --with-pmix=$PMIX_ROOT --with-prrte=$PRRTE_ROOT --with-ucx=no --disable-mpi-fortran > $DYNMPI_BASE/output_openmpi_configure.txt || ERROR_MSG
+	EXEC ./configure --prefix=$OMPI_ROOT $CONFIGURE_PARAMETERS --with-pmix=$PMIX_ROOT --with-prrte=$PRRTE_ROOT --with-ucx=no --disable-mpi-fortran $CONFIG_OMP_CONFIGURE > $DYNMPI_BASE/output_omp_configure.txt || ERROR_MSG
 
 	echo " + Running make ..."
-	EXEC make -j > $DYNMPI_BASE/output_openmpi_make.txt || ERROR_MSG
+	EXEC make -j > $DYNMPI_BASE/output_omp_make.txt || ERROR_MSG
 
 	echo " + Running make install ..."
-        EXEC make all install > $DYNMPI_BASE/output_openmpi_make_install.txt || ERROR_MSG
+        EXEC make all install > $DYNMPI_BASE/output_omp_make_install.txt || ERROR_MSG
 	echo "Installation of Open-MPI successful"
 fi
 
