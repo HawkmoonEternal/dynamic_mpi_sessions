@@ -1,7 +1,12 @@
 
 
 echo "Exporting the path to the base directory"
-export DYNMPI_BASE="$(pwd)"
+#export DYNMPI_BASE="$(pwd)"
+export DYNMPI_BASE=/opt/hpc
+
+export HWLOC_INSTALL_PATH=/opt/hpc/local/hwloc
+export LIBEVENT_INSTALL_PATH=/opt/hpc/local/libevent
+
 
 echo "Exporting the ompi, open-pmix and prrte install paths"
 export PMIX_ROOT=$DYNMPI_BASE/install/pmix

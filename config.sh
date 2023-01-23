@@ -6,9 +6,9 @@ CONFIG_BUILD_OPENPMIX=false
 CONFIG_BUILD_PRRTE=false
 CONFIG_BUILD_OMP=false
 
-#CONFIG_OPENPMIX_CONFIGURE=--disable-werror
-#CONFIG_PRRTE_CONFIGURE=--disable-werror
-#CONFIG_OMP_CONFIGURE=--disable-werror
+CONFIG_OPENPMIX_CONFIGURE="--disable-werror --with-hwloc=$HWLOC_INSTALL_PATH --with-libevent=$LIBEVENT_INSTALL_PATH"
+CONFIG_PRRTE_CONFIGURE="--disable-werror --with-hwloc=$HWLOC_INSTALL_PATH --with-libevent=$LIBEVENT_INSTALL_PATH"
+CONFIG_OMP_CONFIGURE="--disable-werror --with-hwloc=$HWLOC_INSTALL_PATH --with-libevent=$LIBEVENT_INSTALL_PATH"
 
 PP=( "$@" )
 

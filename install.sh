@@ -62,7 +62,7 @@ if $CONFIG_BUILD_OPENPMIX; then
 	EXEC ./autogen.pl > $DYNMPI_BASE/output_openpmix_autogen.txt
 
 	echo " + Running configure ..."
-	EXEC ./configure --prefix=$PMIX_ROOT $CONFIGURE_PARAMETERS $CONFIG_OPENPMIX_CONFIGURE > $DYNMPI_BASE/output_openpmix_configure.txt || ERROR_MSG
+	EXEC ./configure --prefix=$PMIX_ROOT $CONFIG_OPENPMIX_CONFIGURE > $DYNMPI_BASE/output_openpmix_configure.txt || ERROR_MSG
 
 	echo " + Running make ..."
 	EXEC make -j > $DYNMPI_BASE/output_openpmix_make.txt || ERROR_MSG
