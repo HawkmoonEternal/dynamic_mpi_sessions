@@ -52,7 +52,7 @@ if $CONFIG_BUILD_OPENPMIX; then
 	if [ -d "$DST_DIR" ]; then
 		echo "Directory '$DST_DIR' already exists, skipping git clone"
 	else
-		EXEC mkdir build
+		EXEC mkdir -p build
 		EXEC git clone $GIT_CLONE_PARAMS https://github.com/HawkmoonEternal/openpmix ./build/openpmix
 	fi
 
